@@ -13,6 +13,6 @@ public class BankManager : IMoneyReceiver
 	public void ReceiveMoney(float amount)
 	{
 		balance += amount;
-		signalBus.Fire<BalanceChangedSignal>();
+		signalBus.Fire(new BalanceChangedSignal(balance));
 	}
 }
