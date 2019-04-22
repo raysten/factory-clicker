@@ -2,17 +2,17 @@
 using UnityEngine.UI;
 using Zenject;
 
-public class ActiveIncomeUpgradeController : MonoBehaviour
+public class IncomeUpgradeController : MonoBehaviour
 {
 	[SerializeField] private Button upgradeButton;
+	[SerializeField] private Text costTxt;
 	private SignalBus signalBus;
 	private IIncomeMaker boundIncomeMaker;
 	private IMoneyStorage moneyStorage;
 	private float upgradeFactor = 2f; // TODO: Use global settings
 	private float upgradeCostFactor = -8f;
-
-	// TODO: Display upgrade cost. Handle maximum possible upgrade.
-	// TODO: Use it also for passive income and add another interface for activating upgrade.
+	private int maximumUpgradeCount = 10;
+	private int upgradeCount;
 
 	[Inject]
     public void Construct(SignalBus signalBus, IIncomeMaker incomeMaker, IMoneyStorage moneyStorage)
@@ -24,24 +24,25 @@ public class ActiveIncomeUpgradeController : MonoBehaviour
 
 	private void Start()
 	{
-		signalBus.Subscribe<BalanceChangedSignal>(DisableUpgrading);
-		DisableUpgrader(moneyStorage.GetBalance());
+		signalBus.Subscribe<BalanceChangedSignal>(UpdateAvailability);
+		UpdateUpgraderAvailability(moneyStorage.GetBalance());
 	}
 
 	private void OnDestroy()
 	{
-		signalBus.Unsubscribe<BalanceChangedSignal>(DisableUpgrading);
+		signalBus.Unsubscribe<BalanceChangedSignal>(UpdateAvailability);
 	}
 
-	private void DisableUpgrading(BalanceChangedSignal balanceChangedInfo)
+	private void UpdateAvailability(BalanceChangedSignal balanceChangedInfo)
 	{
-		DisableUpgrader(balanceChangedInfo.amount);
+		UpdateUpgraderAvailability(balanceChangedInfo.amount);
 	}
 
-	private void DisableUpgrader(float balance)
+	private void UpdateUpgraderAvailability(float balance)
 	{
-		upgradeButton.interactable =
-			balance >= Mathf.Abs(boundIncomeMaker.GetIncomeRate() * upgradeCostFactor);
+		float currentUpgradeCost = Mathf.Abs(boundIncomeMaker.GetIncomeRate() * upgradeCostFactor);
+		upgradeButton.interactable = balance >= currentUpgradeCost && upgradeCount < maximumUpgradeCount;
+		costTxt.text = currentUpgradeCost.ToString();
 	}
 
 	public void Upgrade()
@@ -49,6 +50,7 @@ public class ActiveIncomeUpgradeController : MonoBehaviour
 		float currentIncomeRate = boundIncomeMaker.GetIncomeRate();
 		moneyStorage.ChangeBalance(currentIncomeRate * upgradeCostFactor);
 		boundIncomeMaker.SetIncomeRate(currentIncomeRate * upgradeFactor);
-		DisableUpgrader(moneyStorage.GetBalance());
+		upgradeCount++;
+		UpdateUpgraderAvailability(moneyStorage.GetBalance());
 	}
 }
