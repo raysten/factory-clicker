@@ -25,6 +25,6 @@ public class BalanceDisplay : MonoBehaviour
 
 	private void OnBalanceChanged(BalanceChangedSignal balanceChangedInfo)
 	{
-		balanceTxt.text = balanceChangedInfo.amount.ToString();
+		balanceTxt.text = balanceChangedInfo.Amount.ToString();
 	}
 }

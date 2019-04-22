@@ -1,9 +1,9 @@
 ﻿public class BalanceChangedSignal
 {
-	public float amount;
+	public float Amount;
 
 	public BalanceChangedSignal(float amount)
 	{
-		this.amount = amount;
+		this.Amount = amount;
 	}
 }

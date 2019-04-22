@@ -4,12 +4,13 @@ using Zenject;
 public class ActiveIncomeController : MonoBehaviour, IIncomeMaker
 {
 	private IMoneyStorage moneyStorage;
-	private float incomeRate = 1f; // TODO: use global settings for it
+	private float incomeRate;
 
 	[Inject]
-	public void Construct(IMoneyStorage moneyStorage)
+	public void Construct(IMoneyStorage moneyStorage, ActiveIncomeSettings activeIncSettings)
 	{
 		this.moneyStorage = moneyStorage;
+		this.incomeRate = activeIncSettings.InitialIncomeRate;
 	}
 
 	public void MakeMoney()
