@@ -1,19 +1,29 @@
 ﻿using UnityEngine;
 using Zenject;
 
-public class ActiveIncomeController : MonoBehaviour
+public class ActiveIncomeController : MonoBehaviour, IIncomeMaker
 {
-	private IMoneyReceiver receiver;
-	private float singleIncome = 10f; // TODO: use global settings for it
+	private IMoneyStorage moneyStorage;
+	private float incomeRate = 1f; // TODO: use global settings for it
 
 	[Inject]
-	public void Construct(IMoneyReceiver receiver)
+	public void Construct(IMoneyStorage moneyStorage)
 	{
-		this.receiver = receiver;
+		this.moneyStorage = moneyStorage;
 	}
 
 	public void MakeMoney()
 	{
-		receiver.ReceiveMoney(singleIncome);
+		moneyStorage.ChangeBalance(incomeRate);
+	}
+
+	public void SetIncomeRate(float incomeRate)
+	{
+		this.incomeRate = incomeRate;
+	}
+
+	public float GetIncomeRate()
+	{
+		return incomeRate;
 	}
 }

@@ -1,6 +1,6 @@
 ﻿using Zenject;
 
-public class BankManager : IMoneyReceiver
+public class BankManager : IMoneyStorage
 {
 	private float balance;
 	private SignalBus signalBus;
@@ -10,9 +10,14 @@ public class BankManager : IMoneyReceiver
 		this.signalBus = signalBus;
 	}
 
-	public void ReceiveMoney(float amount)
+	public void ChangeBalance(float amount)
 	{
 		balance += amount;
 		signalBus.Fire(new BalanceChangedSignal(balance));
+	}
+
+	public float GetBalance()
+	{
+		return balance;
 	}
 }
