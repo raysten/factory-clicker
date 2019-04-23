@@ -2,28 +2,22 @@
 using UnityEngine.UI;
 using Zenject;
 
-public class IncomeUpgradeController : MonoBehaviour
+public abstract class IncomeUpgradeController : MonoBehaviour
 {
-	[SerializeField] private Button upgradeButton;
-	[SerializeField] private Text costTxt;
 	private SignalBus signalBus;
-	private IIncomeMaker boundIncomeMaker;
-	private IMoneyStorage moneyStorage;
-	private ActiveIncomeSettings activeIncSettings;
-	private int upgradeCount;
+	protected IIncomeMaker boundIncomeMaker;
+	protected IMoneyStorage moneyStorage;
 
 	[Inject]
     public void Construct(
 		SignalBus signalBus,
-		IIncomeMaker incomeMaker,
-		IMoneyStorage moneyStorage,
-		ActiveIncomeSettings activeIncSettings
+		//IIncomeMaker incomeMaker,
+		IMoneyStorage moneyStorage
 	)
 	{
 		this.signalBus = signalBus;
-		this.boundIncomeMaker = incomeMaker;
+		//this.boundIncomeMaker = incomeMaker;
 		this.moneyStorage = moneyStorage;
-		this.activeIncSettings = activeIncSettings;
 	}
 
 	private void Start()
@@ -42,19 +36,7 @@ public class IncomeUpgradeController : MonoBehaviour
 		UpdateUpgraderAvailability(balanceChangedInfo.Amount);
 	}
 
-	private void UpdateUpgraderAvailability(float balance)
-	{
-		float currentUpgradeCost = Mathf.Abs(boundIncomeMaker.GetIncomeRate() * activeIncSettings.UpgradeCostFactor);
-		upgradeButton.interactable = balance >= currentUpgradeCost && upgradeCount < activeIncSettings.MaximumUpgradeCount;
-		costTxt.text = currentUpgradeCost.ToString();
-	}
+	protected abstract void UpdateUpgraderAvailability(float balance);
 
-	public void Upgrade()
-	{
-		float currentIncomeRate = boundIncomeMaker.GetIncomeRate();
-		moneyStorage.ChangeBalance(currentIncomeRate * -activeIncSettings.UpgradeCostFactor);
-		boundIncomeMaker.SetIncomeRate(currentIncomeRate * activeIncSettings.UpgradeFactor);
-		upgradeCount++;
-		UpdateUpgraderAvailability(moneyStorage.GetBalance());
-	}
+	public abstract void Upgrade();
 }

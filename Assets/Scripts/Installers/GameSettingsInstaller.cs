@@ -5,9 +5,11 @@ using Zenject;
 public class GameSettingsInstaller : ScriptableObjectInstaller<GameSettingsInstaller>
 {
 	public ActiveIncomeSettings ActiveIncomeSettings;
+	public PassiveIncomeSettings PassiveIncomeSettings;
 
 	public override void InstallBindings()
 	{
 		Container.BindInstance(ActiveIncomeSettings);
+		Container.BindInstance(PassiveIncomeSettings);
 	}
 }

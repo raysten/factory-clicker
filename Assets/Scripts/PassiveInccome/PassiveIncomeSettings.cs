@@ -1,11 +1,15 @@
-﻿public class PassiveIncomeSettings
+﻿using System;
+
+[Serializable]
+public class PassiveIncomeSettings
 {
 	public float InitialIncomeRate;
 	public float InitialInterval;
-	public float IncomeUpgradeFactor;
+	public float IncomeUpgradeIncrease;
+	public float InitialIncomeUpgradeCost;
 	public float IncomeUpgradeCostChange;
 	public float InitialIntervalUpgradeCost;
-	public float IntervalUpgradeCostChange;
+	public float FurtherIntervalUpgradeCost;
 	public float[] IntervalUpgradeChanges;
 	public int MaximumIncomeUpgradeCount;
 }

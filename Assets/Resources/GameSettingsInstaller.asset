@@ -17,3 +17,31 @@ MonoBehaviour:
     UpgradeFactor: 2
     UpgradeCostFactor: 8
     MaximumUpgradeCount: 10
+  PassiveIncomeSettings:
+    InitialIncomeRate: 0
+    InitialInterval: 10
+    IncomeUpgradeIncrease: 35.5
+    InitialIncomeUpgradeCost: 100
+    IncomeUpgradeCostChange: 200
+    InitialIntervalUpgradeCost: 100
+    FurtherIntervalUpgradeCost: 500
+    IntervalUpgradeChanges:
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 0.1
+    - 0.1
+    - 0.1
+    - 0.1
+    - 0.1
+    - 0.1
+    - 0.1
+    - 0.1
+    - 0.1
+    MaximumIncomeUpgradeCount: 26
