@@ -9,14 +9,9 @@ public abstract class IncomeUpgradeController : MonoBehaviour
 	protected IMoneyStorage moneyStorage;
 
 	[Inject]
-    public void Construct(
-		SignalBus signalBus,
-		//IIncomeMaker incomeMaker,
-		IMoneyStorage moneyStorage
-	)
+    public void Construct(SignalBus signalBus, IMoneyStorage moneyStorage)
 	{
 		this.signalBus = signalBus;
-		//this.boundIncomeMaker = incomeMaker;
 		this.moneyStorage = moneyStorage;
 	}
 

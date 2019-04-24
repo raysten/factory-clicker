@@ -38,5 +38,6 @@ public class PassiveIncomeUpgradeController : IncomeUpgradeController
 		boundIncomeMaker.SetIncomeRate(boundIncomeMaker.GetIncomeRate() + passiveIncSettings.IncomeUpgradeIncrease);
 		upgradeCost += passiveIncSettings.IncomeUpgradeCostChange;
 		upgradeCount++;
+		UpdateUpgraderAvailability(moneyStorage.GetBalance());
 	}
 }

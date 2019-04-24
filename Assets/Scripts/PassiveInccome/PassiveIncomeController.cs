@@ -2,7 +2,7 @@
 using UnityEngine;
 using Zenject;
 
-public class PassiveIncomeController : MonoBehaviour, IIncomeMaker
+public class PassiveIncomeController : MonoBehaviour, IIncomeMaker, IPeriodicalIncomeMaker
 {
 	private IMoneyStorage moneyStorage;
 	private PassiveIncomeSettings passiveIncSettings;
@@ -18,6 +18,7 @@ public class PassiveIncomeController : MonoBehaviour, IIncomeMaker
 		this.interval = passiveIncSettings.InitialInterval;
 	}
 
+	#region IIncomeMaker
 	public float GetIncomeRate()
 	{
 		return incomeRate;
@@ -33,6 +34,19 @@ public class PassiveIncomeController : MonoBehaviour, IIncomeMaker
 			StartCoroutine(MakeMoneyPeriodically());
 		}
 	}
+	#endregion
+
+	#region IPeriodicalIncomeMaker
+	public void DecreaseInterval(float delta)
+	{
+		interval -= delta;
+	}
+
+	public bool IsActive()
+	{
+		return isActive;
+	}
+	#endregion
 
 	private IEnumerator MakeMoneyPeriodically()
 	{
