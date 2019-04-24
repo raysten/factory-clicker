@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebeb3a6dbf13dce4996f9cf18d4476b1, type: 3}
+  m_Name: InvestInABusiness
+  m_EditorClassIdentifier: 
+  Title: Invest in a business
+  Description: People say there is an opportunity to invest in a new hot startup.
+    Some say it is easy money - no chance we can lose on the transaction, but others
+    say it will go bankrupt faster than you can blink. Do we want to invest in it?
+  Probability: 2
+  Options:
+  - OptionName: Invest the money
+    Outcomes:
+    - Probability: 50
+      PercentageMoneyChange: 0
+      AbsoluteMoneyChange: 100000
+      Description: You have a nose for business! The company is a great market success
+        and we have already earned some money from it! A great day for us!
+    - Probability: 50
+      PercentageMoneyChange: -20
+      AbsoluteMoneyChange: 0
+      Description: "\u201CYou win some, you lose some\u201D people say. It is not
+        a good day for us, the company has gone bankrupt and we have lost the invested
+        money."
+  - OptionName: Do not invest the money
+    Outcomes:
+    - Probability: 30
+      PercentageMoneyChange: 0
+      AbsoluteMoneyChange: 0
+      Description: You have a nose for business! The company has gone bankrupt shortly
+        after we wanted to invest in it. All investors have lost their money!
+    - Probability: 70
+      PercentageMoneyChange: 0
+      AbsoluteMoneyChange: 0
+      Description: "The company has turned into a great market success! What a pity
+        we haven\u2019t invested in it, but on the other hand - at least we didn\u2019t
+        lose any money..."

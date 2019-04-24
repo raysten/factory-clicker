@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebeb3a6dbf13dce4996f9cf18d4476b1, type: 3}
+  m_Name: TaxTime
+  m_EditorClassIdentifier: 
+  Title: TaxTime
+  Description: Our accountant says we can save some money by skipping paying taxes
+    - we just have to move the money to a bank account in another country and show
+    the IRS we have 0 income. But it may not have a happy ending if the IRS finds
+    out. Do we want to take the risk?
+  Probability: 1
+  Options:
+  - OptionName: Take the risk
+    Outcomes:
+    - Probability: 60
+      PercentageMoneyChange: 0
+      AbsoluteMoneyChange: 0
+      Description: "Luckily for us, it looks like the IRS didn\u2019t find out about
+        our tax fraud! We have saved 20% of the money!"
+    - Probability: 40
+      PercentageMoneyChange: -40
+      AbsoluteMoneyChange: 0
+      Description: The IRS has detected that we want to avoid paying taxes! Now we
+        not only have to pay the taxes, but also pay a fine!
+  - OptionName: Just pay taxes
+    Outcomes:
+    - Probability: 100
+      PercentageMoneyChange: -20
+      AbsoluteMoneyChange: 0
+      Description: "We are good citizens paying taxes in our country. That\u2019s
+        what everyone should do!"
