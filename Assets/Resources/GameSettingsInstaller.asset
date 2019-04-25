@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66fb73cf3ffbada4480f229229c1edc8, type: 3}
   m_Name: GameSettingsInstaller
   m_EditorClassIdentifier: 
-  ActiveIncomeSettings:
+  ActiveIncome:
     InitialIncomeRate: 1
     UpgradeFactor: 2
     UpgradeCostFactor: 8
     MaximumUpgradeCount: 10
-  PassiveIncomeSettings:
+  PassiveIncome:
     InitialIncomeRate: 0
     InitialInterval: 10
     IncomeUpgradeIncrease: 35.5
@@ -46,5 +46,6 @@ MonoBehaviour:
     - 0.1
     MaximumIncomeUpgradeCount: 26
   SpecialEvents:
-  - {fileID: 11400000, guid: 3081b5a8a193e4748a7fa038f0cebcb2, type: 2}
-  - {fileID: 11400000, guid: 35d161430b0e4044cb608ece603e02ba, type: 2}
+    Events:
+    - {fileID: 11400000, guid: 3081b5a8a193e4748a7fa038f0cebcb2, type: 2}
+    - {fileID: 11400000, guid: 35d161430b0e4044cb608ece603e02ba, type: 2}
