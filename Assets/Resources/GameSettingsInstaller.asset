@@ -49,3 +49,5 @@ MonoBehaviour:
     Events:
     - {fileID: 11400000, guid: 3081b5a8a193e4748a7fa038f0cebcb2, type: 2}
     - {fileID: 11400000, guid: 35d161430b0e4044cb608ece603e02ba, type: 2}
+  WinCondition:
+    WinAmount: 3000000

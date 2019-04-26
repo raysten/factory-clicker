@@ -3,13 +3,15 @@ using Zenject;
 
 public class GameplayInstaller : MonoInstaller
 {
-	public SpecialEventOptionButton EventOptionButtonPrefab; // TODO:
+	public SpecialEventOptionButton EventOptionButtonPrefab;
 
 	public override void InstallBindings()
 	{
 		InstallBankManager();
 		InstallEventOptionsPool();
 		InstallSignals();
+		InstallWinCondtion();
+		InstallHighscore();
 	}
 
 	private void InstallBankManager()
@@ -27,8 +29,18 @@ public class GameplayInstaller : MonoInstaller
 
 	private void InstallSignals()
 	{
-		SignalBusInstaller.Install(Container); // TODO: Do it on project context level
-
+		SignalBusInstaller.Install(Container);
 		Container.DeclareSignal<BalanceChangedSignal>();
+	}
+
+	private void InstallWinCondtion()
+	{
+		Container.BindInterfacesTo<WinCondition>().AsSingle();
+	}
+
+	private void InstallHighscore()
+	{
+		Container.BindInterfacesTo<HighscoreIO>().AsSingle();
+		Container.Bind<HighscoreController>().AsSingle();
 	}
 }
