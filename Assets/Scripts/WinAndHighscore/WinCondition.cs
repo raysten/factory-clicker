@@ -36,7 +36,7 @@ public class WinCondition : IInitializable, IDisposable
 	{
 		if (balanceChangedInfo.Amount >= winAmount)
 		{
-			Time.timeScale = 0f; // TODO:
+			Time.timeScale = 0f;
 			highscoreController.OnGameWon();
 			winPanel.Show();
 		}

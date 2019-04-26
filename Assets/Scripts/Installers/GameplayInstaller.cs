@@ -40,7 +40,7 @@ public class GameplayInstaller : MonoInstaller
 
 	private void InstallHighscore()
 	{
-		Container.BindInterfacesTo<HighscoreIO>().AsSingle();
+		//Container.BindInterfacesTo<HighscoreIO>().AsSingle();
 		Container.Bind<HighscoreController>().AsSingle();
 	}
 }

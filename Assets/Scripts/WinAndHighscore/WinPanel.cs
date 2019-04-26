@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class WinPanel : MonoBehaviour
 {
@@ -9,6 +10,6 @@ public class WinPanel : MonoBehaviour
 
 	public void Close()
 	{
-		// TODO: Load menu scene.
+		SceneManager.LoadScene(0);
 	}
 }

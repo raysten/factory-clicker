@@ -13,7 +13,7 @@ public class HighscoreIO : IHighscoreStore
 
 	public float LoadHighscore()
 	{
-		return PlayerPrefs.GetFloat(prefsKey);
+		return PlayerPrefs.GetFloat(prefsKey, 0f);
 	}
 
 	public void SaveHighscore(float score)
