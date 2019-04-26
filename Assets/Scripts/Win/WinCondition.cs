@@ -7,12 +7,19 @@ public class WinCondition : IInitializable, IDisposable
 	private SignalBus signalBus;
 	private float winAmount;
 	private readonly HighscoreController highscoreController;
+	private readonly WinPanel winPanel;
 
-    public WinCondition(SignalBus signalBus, WinSettings settings, HighscoreController highscoreController)
+	public WinCondition(
+		SignalBus signalBus,
+		WinSettings settings,
+		HighscoreController highscoreController,
+		WinPanel winPanel
+	)
 	{
 		this.signalBus = signalBus;
 		this.winAmount = settings.WinAmount;
 		this.highscoreController = highscoreController;
+		this.winPanel = winPanel;
 	}
 
 	public void Initialize()
@@ -29,9 +36,9 @@ public class WinCondition : IInitializable, IDisposable
 	{
 		if (balanceChangedInfo.Amount >= winAmount)
 		{
-			// TODO: End game.
 			Time.timeScale = 0f; // TODO:
 			highscoreController.OnGameWon();
+			winPanel.Show();
 		}
 	}
 }
