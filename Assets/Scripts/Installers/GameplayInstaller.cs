@@ -21,7 +21,8 @@ public class GameplayInstaller : MonoInstaller
 	{
 		Container.BindMemoryPool<SpecialEventOptionButton, SpecialEventOptionButton.Pool>()
 			.WithInitialSize(3)
-			.FromComponentInNewPrefab(EventOptionButtonPrefab);
+			.FromComponentInNewPrefab(EventOptionButtonPrefab)
+			.UnderTransformGroup("EventOptionButtonsPool");
 	}
 
 	private void InstallSignals()
