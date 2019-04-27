@@ -7,13 +7,11 @@ public class SpecialEventOptionButton : MonoBehaviour
 {
 	[SerializeField] private Text title;
 	private EventData.EventOption optionData;
-	private IMoneyStorage moneyStorage;
 	private ISpecialEventHandler handler;
 
 	[Inject]
-    public void Construct(IMoneyStorage moneyStorage, ISpecialEventHandler handler)
+    public void Construct(ISpecialEventHandler handler)
 	{
-		this.moneyStorage = moneyStorage;
 		this.handler = handler;
 	}
 

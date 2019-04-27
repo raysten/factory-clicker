@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using Zenject;
 
 public class ActiveIncomeController : MonoBehaviour, IIncomeMaker, IIncomeBonusReceiver
 {
+	[SerializeField] private Text buttonText;
 	private IMoneyStorage moneyStorage;
 	private float incomeRate;
 	private float bonusFactor;
@@ -12,6 +14,7 @@ public class ActiveIncomeController : MonoBehaviour, IIncomeMaker, IIncomeBonusR
 	{
 		this.moneyStorage = moneyStorage;
 		this.incomeRate = activeIncSettings.InitialIncomeRate;
+		SetButtonText();
 	}
 
 	public void MakeMoney()
@@ -23,6 +26,7 @@ public class ActiveIncomeController : MonoBehaviour, IIncomeMaker, IIncomeBonusR
 	public void SetIncomeRate(float incomeRate)
 	{
 		this.incomeRate = incomeRate;
+		SetButtonText();
 	}
 
 	public float GetIncomeRate()
@@ -35,11 +39,18 @@ public class ActiveIncomeController : MonoBehaviour, IIncomeMaker, IIncomeBonusR
 	public void AddIncomeBonus(float percentage)
 	{
 		bonusFactor = percentage / 100f;
+		SetButtonText();
 	}
 
 	public void RemoveIncomeBonus()
 	{
 		bonusFactor = 0f;
+		SetButtonText();
 	}
 	#endregion
+
+	private void SetButtonText()
+	{
+		buttonText.text = "+" + (incomeRate + incomeRate * bonusFactor).ToString() + "$";
+	}
 }

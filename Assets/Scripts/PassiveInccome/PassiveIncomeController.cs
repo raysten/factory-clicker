@@ -5,7 +5,6 @@ using Zenject;
 public class PassiveIncomeController : MonoBehaviour, IIncomeMaker, IPeriodicalIncomeMaker, IIncomeBonusReceiver, IIntervalBonusReceiver
 {
 	private IMoneyStorage moneyStorage;
-	private PassiveIncomeSettings passiveIncSettings;
 	private bool isActive;
 	private float incomeRate;
 	private float incomeBonusFactor;
@@ -16,7 +15,6 @@ public class PassiveIncomeController : MonoBehaviour, IIncomeMaker, IPeriodicalI
 	public void Construct(IMoneyStorage moneyStorage, PassiveIncomeSettings passiveIncSettings)
 	{
 		this.moneyStorage = moneyStorage;
-		this.passiveIncSettings = passiveIncSettings;
 		this.interval = passiveIncSettings.InitialInterval;
 	}
 
