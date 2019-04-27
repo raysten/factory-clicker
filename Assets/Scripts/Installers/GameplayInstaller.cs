@@ -4,11 +4,13 @@ using Zenject;
 public class GameplayInstaller : MonoInstaller
 {
 	public SpecialEventOptionButton EventOptionButtonPrefab;
+	public BonusButton BonusButtonPrefab;
 
 	public override void InstallBindings()
 	{
 		InstallBankManager();
 		InstallEventOptionsPool();
+		InstallBonusPool();
 		InstallSignals();
 		InstallWinCondtion();
 		InstallHighscore();
@@ -27,6 +29,14 @@ public class GameplayInstaller : MonoInstaller
 			.UnderTransformGroup("EventOptionButtonsPool");
 	}
 
+	private void InstallBonusPool()
+	{
+		Container.BindMemoryPool<BonusButton, BonusButton.Pool>()
+			.WithInitialSize(3)
+			.FromComponentInNewPrefab(BonusButtonPrefab)
+			.UnderTransformGroup("BonusButtonsPool");
+	}
+
 	private void InstallSignals()
 	{
 		SignalBusInstaller.Install(Container);
@@ -40,7 +50,6 @@ public class GameplayInstaller : MonoInstaller
 
 	private void InstallHighscore()
 	{
-		//Container.BindInterfacesTo<HighscoreIO>().AsSingle();
 		Container.Bind<HighscoreController>().AsSingle();
 	}
 }

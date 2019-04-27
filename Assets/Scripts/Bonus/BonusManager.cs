@@ -7,54 +7,50 @@ public class BonusManager : MonoBehaviour
 	private IIncomeBonusReceiver activeIncome;
 	private IIncomeBonusReceiver passiveIncome;
 	private IIntervalBonusReceiver passiveInterval;
-	private BonusesSettings settings;
 
 	[Inject]
     public void Construct(
 		[Inject (Id = "active")] IIncomeBonusReceiver activeIncome,
 		[Inject(Id = "passive")] IIncomeBonusReceiver passiveIncome,
-		[Inject(Id = "passive")] IIntervalBonusReceiver passiveInterval,
-		BonusesSettings settings
+		[Inject(Id = "passive")] IIntervalBonusReceiver passiveInterval
 	)
 	{
 		this.activeIncome = activeIncome;
 		this.passiveIncome = passiveIncome;
 		this.passiveInterval = passiveInterval;
-		this.settings = settings;
 	}
 
-	public void AddActiveIncomeBonus()
+	public void ProcessBonus(BonusesSettings.BonusSettings bonusData, BonusButton button)
 	{
-		StartCoroutine(IncomeBonusTimeout(activeIncome, settings.ActiveIncome.Percentage, settings.ActiveIncome.Duration));
+		switch (bonusData.Type)
+		{
+			case BonusesSettings.BONUS_TYPE.ACTIVE_INCOME:
+				StartCoroutine(IncomeBonusTimeout(activeIncome, bonusData.Percentage, bonusData.Duration, button));
+				break;
+			case BonusesSettings.BONUS_TYPE.PASSIVE_INCOME:
+				StartCoroutine(IncomeBonusTimeout(passiveIncome, bonusData.Percentage, bonusData.Duration, button));
+				break;
+			case BonusesSettings.BONUS_TYPE.PASSIVE_INTERVAL:
+				StartCoroutine(IntervalBonusTimeout(passiveInterval, bonusData.Percentage, bonusData.Duration, button));
+				break;
+		}
 	}
 
-	public void AddPassiveIncomeBonus()
-	{
-		StartCoroutine(IncomeBonusTimeout(passiveIncome, settings.PassiveIncome.Percentage, settings.PassiveIncome.Duration));
-	}
-
-	public void AddPassiveIntervalBonus()
-	{
-		StartCoroutine(
-			IntervalBonusTimeout(
-				passiveInterval,
-				settings.PassiveInterval.Percentage,
-				settings.PassiveInterval.Duration
-			)
-		);
-	}
-
-	private IEnumerator IncomeBonusTimeout(IIncomeBonusReceiver receiver, float percentage, float duration)
+	private IEnumerator IncomeBonusTimeout(IIncomeBonusReceiver receiver, float percentage, float duration, BonusButton button)
 	{
 		receiver.AddIncomeBonus(percentage);
+		button.Disable();
 		yield return new WaitForSeconds(duration);
 		receiver.RemoveIncomeBonus();
+		button.Enable();
 	}
 
-	private IEnumerator IntervalBonusTimeout(IIntervalBonusReceiver receiver, float percentage, float duration)
+	private IEnumerator IntervalBonusTimeout(IIntervalBonusReceiver receiver, float percentage, float duration, BonusButton button)
 	{
 		receiver.AddIntervalBonus(percentage);
+		button.Disable();
 		yield return new WaitForSeconds(duration);
+		button.Enable();
 		receiver.RemoveIntervalBonus();
 	}
 }

@@ -3,9 +3,7 @@
 [Serializable]
 public class BonusesSettings
 {
-	public BonusSettings ActiveIncome;
-	public BonusSettings PassiveIncome;
-	public BonusSettings PassiveInterval;
+	public BonusSettings[] Bonuses;
 
 	[Serializable]
     public class BonusSettings
@@ -14,5 +12,8 @@ public class BonusesSettings
 		public float Duration;
 		public string Title;
 		public float Cost;
+		public BONUS_TYPE Type;
 	}
+
+	public enum BONUS_TYPE { ACTIVE_INCOME, PASSIVE_INCOME, PASSIVE_INTERVAL }
 }

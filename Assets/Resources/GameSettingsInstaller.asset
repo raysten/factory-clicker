@@ -52,15 +52,19 @@ MonoBehaviour:
   WinCondition:
     WinAmount: 3000000
   Bonus:
-    ActiveIncome:
-      Percentage: 20
+    Bonuses:
+    - Percentage: 20
       Duration: 60
       Title: +20% Active income, 1 minute
-    PassiveIncome:
-      Percentage: 20
+      Cost: 0
+      Type: 0
+    - Percentage: 20
       Duration: 60
       Title: +20% Passive income, 1 minute
-    PassiveInterval:
-      Percentage: 20
+      Cost: 0
+      Type: 1
+    - Percentage: 20
       Duration: 60
-      Title: 20% Faster passive income, 1 minute
+      Title: +20% Faster passive income, 1 minute
+      Cost: 0
+      Type: 2

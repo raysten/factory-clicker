@@ -27,13 +27,14 @@ public class SpecialEventManager : MonoBehaviour
 		{
 			yield return new WaitForSeconds(eventCheckInterval);
 
-			foreach (EventData eventData in settings.Events)
+			for (int i = 0; i < settings.Events.Count; i++)
 			{
 				int randomChance = Random.Range(0, 100);
 
-				if (randomChance <= eventData.Probability)
+				if (randomChance <= settings.Events[i].Probability)
 				{
-					handler.HandleEvent(eventData);
+					handler.HandleEvent(settings.Events[i]);
+					break;
 				}
 			}
 		}
