@@ -2,13 +2,15 @@
 using UnityEngine;
 using Zenject;
 
-public class PassiveIncomeController : MonoBehaviour, IIncomeMaker, IPeriodicalIncomeMaker
+public class PassiveIncomeController : MonoBehaviour, IIncomeMaker, IPeriodicalIncomeMaker, IIncomeBonusReceiver, IIntervalBonusReceiver
 {
 	private IMoneyStorage moneyStorage;
 	private PassiveIncomeSettings passiveIncSettings;
 	private bool isActive;
 	private float incomeRate;
+	private float incomeBonusFactor;
 	private float interval;
+	private float intervalBonusFactor;
 
 	[Inject]
 	public void Construct(IMoneyStorage moneyStorage, PassiveIncomeSettings passiveIncSettings)
@@ -48,12 +50,36 @@ public class PassiveIncomeController : MonoBehaviour, IIncomeMaker, IPeriodicalI
 	}
 	#endregion
 
+	#region IIncomeBonusReceiver
+	public void AddIncomeBonus(float percentage)
+	{
+		incomeBonusFactor = percentage / 100f;
+	}
+
+	public void RemoveIncomeBonus()
+	{
+		incomeBonusFactor = 0f;
+	}
+	#endregion
+
+	#region IIntervalBonusReceiver
+	public void AddIntervalBonus(float percentage)
+	{
+		intervalBonusFactor = percentage / 100f;
+	}
+
+	public void RemoveIntervalBonus()
+	{
+		intervalBonusFactor = 0f;
+	}
+	#endregion
+
 	private IEnumerator MakeMoneyPeriodically()
 	{
 		while (isActive)
 		{
-			moneyStorage.ChangeBalance(incomeRate);
-			yield return new WaitForSeconds(interval);
+			moneyStorage.ChangeBalance(incomeRate + incomeRate * incomeBonusFactor);
+			yield return new WaitForSeconds(interval - interval * intervalBonusFactor);
 		}
 	}
 }

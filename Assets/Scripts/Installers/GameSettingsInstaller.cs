@@ -9,6 +9,7 @@ public class GameSettingsInstaller : ScriptableObjectInstaller<GameSettingsInsta
 	public PassiveIncomeSettings PassiveIncome;
 	public SpecialEventsSettings SpecialEvents;
 	public WinSettings WinCondition;
+	public BonusesSettings Bonus;
 
 	public override void InstallBindings()
 	{
@@ -16,5 +17,6 @@ public class GameSettingsInstaller : ScriptableObjectInstaller<GameSettingsInsta
 		Container.BindInstance(PassiveIncome);
 		Container.BindInstance(SpecialEvents);
 		Container.BindInstance(WinCondition);
+		Container.BindInstance(Bonus);
 	}
 }

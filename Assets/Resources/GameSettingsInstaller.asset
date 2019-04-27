@@ -51,3 +51,16 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 35d161430b0e4044cb608ece603e02ba, type: 2}
   WinCondition:
     WinAmount: 3000000
+  Bonus:
+    ActiveIncome:
+      Percentage: 20
+      Duration: 60
+      Title: +20% Active income, 1 minute
+    PassiveIncome:
+      Percentage: 20
+      Duration: 60
+      Title: +20% Passive income, 1 minute
+    PassiveInterval:
+      Percentage: 20
+      Duration: 60
+      Title: 20% Faster passive income, 1 minute
