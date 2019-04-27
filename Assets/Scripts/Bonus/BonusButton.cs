@@ -8,14 +8,12 @@ public class BonusButton : MonoBehaviour
 	[SerializeField] private Text cost;
 	[SerializeField] private Button btn;
 	private BonusManager manager;
-	private BonusGUI gui;
 	private BonusesSettings.BonusSettings settings;
 
 	[Inject]
-	public void Construct(BonusManager manager, BonusGUI gui)
+	public void Construct(BonusManager manager)
 	{
 		this.manager = manager;
-		this.gui = gui;
 	}
 
 	public void Execute()

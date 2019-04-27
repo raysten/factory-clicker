@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
@@ -23,7 +22,7 @@ public class SpecialEventManager : MonoBehaviour
 
 	private IEnumerator SpecialEventActivator()
 	{
-		while (true) // TODO:
+		while (true)
 		{
 			yield return new WaitForSeconds(eventCheckInterval);
 
