@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upgradeButton: {fileID: 6220584512371099519}
-  costTxt: {fileID: 6220584511258341783}
+  costTxt: {fileID: 7647353034548065440}
 --- !u!1001 &970477588057425695
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -146,6 +146,46 @@ PrefabInstance:
       propertyPath: m_Text
       value: Passive Income Upgrade
       objectReference: {fileID: 0}
+    - target: {fileID: 6360973119300116676, guid: 53cde988cb2f230478329ad32a970c53,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6360973119300116676, guid: 53cde988cb2f230478329ad32a970c53,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6360973119300116676, guid: 53cde988cb2f230478329ad32a970c53,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6360973119300116676, guid: 53cde988cb2f230478329ad32a970c53,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5977622720985039061, guid: 53cde988cb2f230478329ad32a970c53,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5977622720985039061, guid: 53cde988cb2f230478329ad32a970c53,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5977622720985039061, guid: 53cde988cb2f230478329ad32a970c53,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5977622720985039061, guid: 53cde988cb2f230478329ad32a970c53,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53cde988cb2f230478329ad32a970c53, type: 3}
 --- !u!1 &6220584512371099516 stripped
@@ -166,9 +206,9 @@ MonoBehaviour:
   m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &6220584511258341783 stripped
+--- !u!114 &7647353034548065440 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6567410023121401480, guid: 53cde988cb2f230478329ad32a970c53,
+  m_CorrespondingSourceObject: {fileID: 7446437174202479551, guid: 53cde988cb2f230478329ad32a970c53,
     type: 3}
   m_PrefabInstance: {fileID: 970477588057425695}
   m_PrefabAsset: {fileID: 0}

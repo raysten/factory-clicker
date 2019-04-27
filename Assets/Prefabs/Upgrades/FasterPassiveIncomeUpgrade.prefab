@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upgradeButton: {fileID: 1227373964121016134}
-  costTxt: {fileID: 1227373965195588014}
+  costTxt: {fileID: 3277404093910103193}
 --- !u!1001 &5344825530576668454
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -149,11 +149,51 @@ PrefabInstance:
     - target: {fileID: 6567410023273729757, guid: 53cde988cb2f230478329ad32a970c53,
         type: 3}
       propertyPath: m_FontData.m_FontSize
-      value: 10
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 6567410023273729757, guid: 53cde988cb2f230478329ad32a970c53,
         type: 3}
       propertyPath: m_FontData.m_MinSize
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6360973119300116676, guid: 53cde988cb2f230478329ad32a970c53,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6360973119300116676, guid: 53cde988cb2f230478329ad32a970c53,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6360973119300116676, guid: 53cde988cb2f230478329ad32a970c53,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6360973119300116676, guid: 53cde988cb2f230478329ad32a970c53,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5977622720985039061, guid: 53cde988cb2f230478329ad32a970c53,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5977622720985039061, guid: 53cde988cb2f230478329ad32a970c53,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5977622720985039061, guid: 53cde988cb2f230478329ad32a970c53,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5977622720985039061, guid: 53cde988cb2f230478329ad32a970c53,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -176,9 +216,9 @@ MonoBehaviour:
   m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1227373965195588014 stripped
+--- !u!114 &3277404093910103193 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6567410023121401480, guid: 53cde988cb2f230478329ad32a970c53,
+  m_CorrespondingSourceObject: {fileID: 7446437174202479551, guid: 53cde988cb2f230478329ad32a970c53,
     type: 3}
   m_PrefabInstance: {fileID: 5344825530576668454}
   m_PrefabAsset: {fileID: 0}
